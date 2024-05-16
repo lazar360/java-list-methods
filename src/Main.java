@@ -24,7 +24,13 @@ public class Main {
         // 6- max
         System.out.println("stream().mapToInt(v -> v).max()= " + listInteger.stream().mapToInt(v -> v).max().orElseThrow(NoSuchElementException::new));
         // variante preferee
-        System.out.println("Collection.max(listInteger)= " + Collections.max(listInteger));
+        System.out.println("Collections.max(listInteger)= " + Collections.max(listInteger));
+        // java 5
+        int max = 0;
+        for (Integer integer : listInteger) {
+            max = max > integer ? max : integer;
+        }
+        System.out.println("Java 5 max : and the winner is= " + max);
 
         // 7- find an item
         System.out.println("listInteger.contains(1)= " + listInteger.contains(1));
