@@ -45,5 +45,18 @@ public class Main {
         System.out.println("listInteger.stream().filter(Arrays.asList(1, 2, 3)::contains) " + listInteger.stream()
                 .filter(Arrays.asList(1, 2, 3)::contains).toList());
 
+        // 11- reverse linked list
+        LinkedList<Integer> linkedList = new LinkedList<>(Arrays.asList(1, 2, 3, 4));
+
+        // iterative method
+        LinkedList<Integer> tmp = new LinkedList<>();
+        for (int i = 0; i < linkedList.size(); i++) {
+            tmp.add(linkedList.get(linkedList.size()-1-i));
+        }
+        linkedList = tmp;
+        System.out.println("reverse linked list (iterative method)= " + linkedList);
+
+        // stream method
+
     }
 }
