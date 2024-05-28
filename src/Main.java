@@ -57,6 +57,9 @@ public class Main {
         System.out.println("reverse linked list (iterative method)= " + linkedList);
 
         // stream method
+        System.out.println("reverse linked list (stream method 1)= " + linkedList.stream().sorted().toList());
+        System.out.println("reverse linked list (stream method 2)= " + linkedList.stream().sorted(Comparator.reverseOrder()).toList());
+
 
     }
 }
