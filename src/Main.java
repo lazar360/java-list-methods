@@ -65,6 +65,13 @@ public class Main {
         listInteger.remove(2);
         System.out.println("Remove 3 from list : (index 2) " + listInteger);
 
+        // 13- AddAll
+        List<String> stringList = new ArrayList<>(Arrays.asList("A", "D"));
+        List<String> stringList1 = new ArrayList<>(Arrays.asList("B", "C"));
+        System.out.println("addAll list : " + stringList1 + " to " + stringList+ " at index 1");
+        stringList.addAll(1, stringList1);
+        System.out.println("stringList= "+stringList);
+
 
     }
 }
