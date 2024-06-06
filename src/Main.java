@@ -60,6 +60,11 @@ public class Main {
         System.out.println("reverse linked list (stream method 1)= " + linkedList.stream().sorted().toList());
         System.out.println("reverse linked list (stream method 2)= " + linkedList.stream().sorted(Comparator.reverseOrder()).toList());
 
+        // 12 - Remove
+        System.out.println("Remove 3 from list : " + listInteger);
+        listInteger.remove(2);
+        System.out.println("Remove 3 from list : (index 2) " + listInteger);
+
 
     }
 }
