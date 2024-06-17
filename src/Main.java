@@ -7,10 +7,25 @@ public class Main {
         // JAVA LIST METHODS
         // 1- instantiate list with dynamic size
         List<Integer> listInteger = new ArrayList<>(Arrays.asList(1, 2, 3));
-        listInteger.add(4);
 
         // 2 - print listInteger
         System.out.println("listInteger= " + listInteger);
+
+        // 2.1- add an item at the last index
+        listInteger.add(4);
+        System.out.println("add an item at the last index : listInteger.add(4)= " + listInteger);
+
+        // 2.2- add an item at a specific index
+        listInteger.add(0, 4);
+        System.out.println("add an item at the index 0 : listInteger.add(0, 4)= " + listInteger);
+
+        // 2.3- add an item at a specific index
+        listInteger.remove(0);
+        System.out.println("remove an item at the index 0 : listInteger.remove(0)= " + listInteger);
+
+        // 2.4- remove an item with object
+        listInteger.remove(Integer.valueOf(3));
+        System.out.println("remove an item with object : listInteger.remove(Integer.valueOf(3)) = " + listInteger);
 
         // 3- print size
         System.out.println("listInteger.size()= " + listInteger.size());
