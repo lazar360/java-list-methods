@@ -19,7 +19,7 @@ public class Main {
         listInteger.add(0, 4);
         System.out.println("add an item at the index 0 : listInteger.add(0, 4)= " + listInteger);
 
-        // 2.3- add an item at a specific index
+        // 2.3- remove an item at a specific index
         listInteger.remove(0);
         System.out.println("remove an item at the index 0 : listInteger.remove(0)= " + listInteger);
 
@@ -74,10 +74,6 @@ public class Main {
         // stream method
         System.out.println("reverse linked list (stream method 1)= " + linkedList.stream().sorted().toList());
         System.out.println("reverse linked list (stream method 2)= " + linkedList.stream().sorted(Comparator.reverseOrder()).toList());
-
-        // 12 - Remove
-        System.out.println("Remove 3 from list : " + listInteger);
-        listInteger.remove(2);
         System.out.println("Remove 3 from list : (index 2) " + listInteger);
 
 
