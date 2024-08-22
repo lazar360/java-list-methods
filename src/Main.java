@@ -72,6 +72,10 @@ public class Main {
         stringList.addAll(1, stringList1);
         System.out.println("stringList= "+stringList);
 
+        // 14- RemoveIf
+        System.out.println("RemoveIf < 2 " + listInteger);
+        System.out.println("RemoveIf < 2 " + listInteger.removeIf(integer -> integer<2));
+        System.out.println("listInteger= " + listInteger);
 
     }
 }
