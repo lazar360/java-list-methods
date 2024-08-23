@@ -5,11 +5,23 @@ public class Main {
     public static void main(String[] args) {
 
         // JAVA LIST METHODS
-        // 1- instantiate list with dynamic size
+        // 1- Create
+        // 1.1 - list with dynamic size
         List<Integer> listInteger = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+        // 1.2 - Array to List
+        Integer[] arrInt = {50,51,52, 10, 772, 6, 100};
+        List<Integer> anotherListInteger = Arrays.asList(arrInt);
+
+        // 1.3 - List to Array
+        List<String> mediaList = new ArrayList<>(Arrays.asList("Internet", "TV", "Paper"));
+        String[] strArray = mediaList.toArray(new String[0]);
+        System.out.println(Arrays.toString(strArray));
 
         // 2 - print listInteger
         System.out.println("listInteger= " + listInteger);
+        System.out.println("anotherListInteger= " + anotherListInteger);
+        System.out.println("mediaList= " + Arrays.toString(strArray));
 
         // 2.1- add an item at the last index
         listInteger.add(4);
@@ -26,6 +38,10 @@ public class Main {
         // 2.4- remove an item with object
         listInteger.remove(Integer.valueOf(3));
         System.out.println("remove an item with object : listInteger.remove(Integer.valueOf(3)) = " + listInteger);
+
+        // 2.5- set an item
+        System.out.println("set an item listInteger.set(0, 14000) = " + listInteger.set(2, 14000));
+
 
         // 3- print size
         System.out.println("listInteger.size()= " + listInteger.size());
@@ -88,5 +104,17 @@ public class Main {
         System.out.println("RemoveIf < 2 " + listInteger.removeIf(integer -> integer<2));
         System.out.println("listInteger= " + listInteger);
 
+        // 15- Sort
+        // 15.1 - natural sorting using Collections class
+        Collections.sort(anotherListInteger);
+        System.out.println("Natural Sorting: ASC " + anotherListInteger);
+
+        // 15.2 - custom sorting using Collections class
+        anotherListInteger.sort((o1, o2) -> o2-o1);
+        System.out.println("Custom Sorting: DESC " + anotherListInteger);
+
+        //16- Sublist
+        List<Integer> subAnotherListInteger = anotherListInteger.subList(0, 2);
+        System.out.println("subAnotherListInteger = anotherListInteger.subList(0, 2) : " + subAnotherListInteger);
     }
 }
