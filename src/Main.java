@@ -42,6 +42,18 @@ public class Main {
         // 2.5- set an item
         System.out.println("set an item listInteger.set(0, 14000) = " + listInteger.set(2, 14000));
 
+        // 2.6 - modify an item
+        System.out.println("modify a specific element in a list : ");
+        anotherListInteger.set(anotherListInteger.indexOf(10), 12);
+        System.out.println(anotherListInteger);
+
+        // 2.7 - replace All
+        /*        for (Integer theInt : anotherListInteger) {
+            if (theInt < 20) anotherListInteger.set(anotherListInteger.indexOf(theInt), 1);
+        }*/
+        System.out.println("modify all specific element in a list : ");
+        anotherListInteger.replaceAll(theInt -> theInt < 20 ? 1 : theInt);
+        System.out.println(anotherListInteger);
 
         // 3- print size
         System.out.println("listInteger.size()= " + listInteger.size());
