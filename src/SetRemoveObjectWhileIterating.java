@@ -9,6 +9,14 @@ class MyObjectToSet {
         this.strField = strField;
     }
 
+    public MyObjectToSet() {
+    }
+
+    public MyObjectToSet(String strField, Integer intField) {
+        this.strField = strField;
+        this.intField = intField;
+    }
+
     public void setIntField(Integer intField) {
         this.intField = intField;
     }
@@ -59,12 +67,11 @@ public class SetRemoveObjectWhileIterating {
         myObjectToSetList.add(myObjectToSet2);
 
         System.out.println("1-Modification d'un objet : approche nouvelle liste avec boucle (safe)");
-        System.out.println("Avant Modification");
-        myObjectToSetList.forEach(System.out::println);
+        System.out.println(myObjectToSetList);
         List<MyObjectToSet> newMyObjectToSets = new ArrayList<>();
         for (MyObjectToSet objectToSet : myObjectToSetList) {
-            MyObjectToSet tmpObject = new MyObjectToSet();
             if (objectToSet.getIntField() == 1) {
+                MyObjectToSet tmpObject = new MyObjectToSet();
                 tmpObject.setStrField(objectToSet.getStrField());
                 tmpObject.setIntField(12);
                 newMyObjectToSets.add(tmpObject);
@@ -75,33 +82,23 @@ public class SetRemoveObjectWhileIterating {
         System.out.println(newMyObjectToSets);
         System.out.println("----------");
         System.out.println("2-Modification d'un objet : approche nouvelle liste avec stream (safe)");
-        System.out.println("Avant Modification");
-        myObjectToSetList.forEach(System.out::println);
+        System.out.println(myObjectToSetList);
         newMyObjectToSets = myObjectToSetList.stream()
-                .map(objectToSet -> {
-                    MyObjectToSet tmpObject = new MyObjectToSet();
-                    if (objectToSet.getIntField() == 1) {
-                        tmpObject.setStrField(objectToSet.getStrField());
-                        tmpObject.setIntField(12);
-                        return tmpObject;
-                    } else {
-                        return objectToSet;
-                    }
-                })
-                .toList();
+                        .map(objectToSet -> objectToSet.getIntField() == 1 ?
+                        new MyObjectToSet(objectToSet.getStrField(), 12) :
+                        objectToSet)
+                        .toList();
         System.out.println(newMyObjectToSets);
         System.out.println("----------");
 
-        System.out.println("3-Modification d'un objet : approche stream");
-        System.out.println("Avant Modification");
-        myObjectToSetList.forEach(System.out::println);
+        System.out.println("3-Modification d'un objet : approche stream (unsafe)");
+        System.out.println(myObjectToSetList);
         myObjectToSetList.stream().filter(objectToSet -> objectToSet.getIntField() == 2).forEach(objectToSet -> objectToSet.setIntField(23));
         System.out.println(myObjectToSetList);
         System.out.println("----------");
 
-        System.out.println("4-Modification d'un objet : approche foreach");
-        System.out.println("Avant Modification");
-        myObjectToSetList.forEach(System.out::println);
+        System.out.println("4-Modification d'un objet : approche foreach (unsafe)");
+        System.out.println(myObjectToSetList);
         for (MyObjectToSet objectToSet : myObjectToSetList) {
             if (Objects.equals("string1", objectToSet.getStrField())) {
                 objectToSet.setStrField("string12");
@@ -119,34 +116,41 @@ public class SetRemoveObjectWhileIterating {
             }
         }
         System.out.println(listFruits);
+        System.out.println("----------");
 
         System.out.println("6- Suppression d'un objet : iterator");
         Iterator<String> iterator = listFruits.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String fruit = iterator.next();
-            if (fruit.contains("Modified")){
+            if (fruit.contains("Modified")) {
                 iterator.remove();
             }
         }
         System.out.println(listFruits);
         listFruits.add("Apple");
         listFruits.add("Carote Cake");
+        System.out.println("----------");
 
         System.out.println("6- Suppression d'un objet : removeIf");
+        System.out.println(listFruits);
         listFruits.removeIf(fruit -> fruit.contains("Cake"));
         System.out.println(listFruits);
+        System.out.println("----------");
 
         System.out.println("7- Suppression d'un objet : stream.filter()");
+        System.out.println(listFruits);
         List<String> collected = listFruits.stream().filter(fruit -> !"Apple".equals(fruit)).toList();
         System.out.println(collected);
         listFruits.add("Carote Cake");
         listFruits.add("Orange Juice");
+        System.out.println("----------");
 
 
         System.out.println("8- Suppression d'un objet : removeAll");
         List<String> toRemove = new ArrayList<>();
+        System.out.println(listFruits);
         for (String fruitsToRemove : listFruits) {
-            if (fruitsToRemove.contains("Cake") || fruitsToRemove.contains("Juice")){
+            if (fruitsToRemove.contains("Cake") || fruitsToRemove.contains("Juice")) {
                 toRemove.add(fruitsToRemove);
             }
         }
