@@ -126,6 +126,13 @@ public class SetRemoveObjectWhileIterating {
                 iterator.remove();
             }
         }
+        // As foreach loop implements iterator, then this is similar :
+        /*for (String fruit : listFruits){
+            fruit = iterator.next();
+            if (fruit.contains("Modified")) {
+                iterator.remove();
+            }
+        }*/
         System.out.println(listFruits);
         listFruits.add("Apple");
         listFruits.add("Carote Cake");
