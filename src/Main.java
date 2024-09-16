@@ -88,44 +88,44 @@ public class Main {
         System.out.println("listInteger.stream().filter(Arrays.asList(1, 2, 3)::contains) " + listInteger.stream()
                 .filter(Arrays.asList(1, 2, 3)::contains).toList());
 
-        // 11- reverse linked list
-        LinkedList<Integer> linkedList = new LinkedList<>(Arrays.asList(1, 2, 3, 4));
+        // 11- reverse list
+        List<Integer> listToReverse = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
 
         // iterative method
         LinkedList<Integer> tmp = new LinkedList<>();
-        for (int i = 0; i < linkedList.size(); i++) {
-            tmp.add(linkedList.get(linkedList.size()-1-i));
+        for (int i = 0; i < listToReverse.size(); i++) {
+            tmp.add(listToReverse.get(listToReverse.size()-1-i));
         }
-        linkedList = tmp;
-        System.out.println("reverse linked list (iterative method)= " + linkedList);
+        listToReverse = tmp;
+        System.out.println("reverse linked list (iterative method)= " + listToReverse);
 
         // stream method
-        System.out.println("reverse linked list (stream method 1)= " + linkedList.stream().sorted().toList());
-        System.out.println("reverse linked list (stream method 2)= " + linkedList.stream().sorted(Comparator.reverseOrder()).toList());
+        System.out.println("reverse linked list (stream method 1)= " + listToReverse.stream().sorted().toList());
+        System.out.println("reverse linked list (stream method 2)= " + listToReverse.stream().sorted(Comparator.reverseOrder()).toList());
         System.out.println("Remove 3 from list : (index 2) " + listInteger);
 
-        // 13- AddAll
+        // 12- AddAll
         List<String> stringList = new ArrayList<>(Arrays.asList("A", "D"));
         List<String> stringList1 = new ArrayList<>(Arrays.asList("B", "C"));
         System.out.println("addAll list : " + stringList1 + " to " + stringList+ " at index 1");
         stringList.addAll(1, stringList1);
         System.out.println("stringList= "+stringList);
 
-        // 14- RemoveIf
+        // 13- RemoveIf
         System.out.println("RemoveIf < 2 " + listInteger);
         System.out.println("RemoveIf < 2 " + listInteger.removeIf(integer -> integer<2));
         System.out.println("listInteger= " + listInteger);
 
-        // 15- Sort
-        // 15.1 - natural sorting using Collections class
+        // 14- Sort
+        // 14.1 - natural sorting using Collections class
         Collections.sort(anotherListInteger);
         System.out.println("Natural Sorting: ASC " + anotherListInteger);
 
-        // 15.2 - custom sorting using Collections class
+        // 14.2 - custom sorting using Collections class
         anotherListInteger.sort((o1, o2) -> o2-o1);
         System.out.println("Custom Sorting: DESC " + anotherListInteger);
 
-        //16- Sublist
+        //15- Sublist
         List<Integer> subAnotherListInteger = anotherListInteger.subList(0, 2);
         System.out.println("subAnotherListInteger = anotherListInteger.subList(0, 2) : " + subAnotherListInteger);
     }
