@@ -66,11 +66,24 @@ public class SetRemoveObjectWhileIterating {
         myObjectToSetList.add(myObjectToSet1);
         myObjectToSetList.add(myObjectToSet2);
 
+        System.out.println("0-Modification d'un objet : approche stream optional (safe)");
+        System.out.println(myObjectToSetList);
+        myObjectToSetList.stream()
+                .filter(myObj -> myObj.getIntField() == 1)
+                .findFirst()
+                .map(existingMyObj -> {
+                    existingMyObj.setIntField(11);
+                    return existingMyObj;
+                })
+                .orElseThrow(() -> new RuntimeException("no resource found"));
+        System.out.println(myObjectToSetList);
+        System.out.println("----------");
+
         System.out.println("1-Modification d'un objet : approche nouvelle liste avec boucle (safe)");
         System.out.println(myObjectToSetList);
         List<MyObjectToSet> newMyObjectToSets = new ArrayList<>();
         for (MyObjectToSet objectToSet : myObjectToSetList) {
-            if (objectToSet.getIntField() == 1) {
+            if (objectToSet.getIntField() == 11) {
                 MyObjectToSet tmpObject = new MyObjectToSet();
                 tmpObject.setStrField(objectToSet.getStrField());
                 tmpObject.setIntField(12);
@@ -84,10 +97,10 @@ public class SetRemoveObjectWhileIterating {
         System.out.println("2-Modification d'un objet : approche nouvelle liste avec stream (safe)");
         System.out.println(myObjectToSetList);
         newMyObjectToSets = myObjectToSetList.stream()
-                        .map(objectToSet -> objectToSet.getIntField() == 1 ?
+                .map(objectToSet -> objectToSet.getIntField() == 1 ?
                         new MyObjectToSet(objectToSet.getStrField(), 12) :
                         objectToSet)
-                        .toList();
+                .toList();
         System.out.println(newMyObjectToSets);
         System.out.println("----------");
 
